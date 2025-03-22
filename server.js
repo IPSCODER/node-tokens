@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 
-const users = [{ id: 1, email: 'test@example.com', password: 'password123' }];
+const users = [{ id: 1, email: 'test@example.com', password: 'Test@1234' }];
 const refreshTokens = [];
 
 // Generate Access Token
@@ -29,6 +29,7 @@ const generateRefreshToken = (user) => {
 // Login Route
 app.post('/login', (req, res) => {
     const { email, password } = req.body;
+    console.log(email,password)
     const user = users.find(u => u.email === email && u.password === password);
     if (!user) return res.status(400).json({ message: 'Invalid credentials' });
     
@@ -74,6 +75,10 @@ app.get("/api/users",(req, res) => {
     setTimeout(() =>{
         res.send(data)
     },4000)
+})
+
+app.get("/",(req, res) => {
+    res.json("running")
 })
 
 app.listen(5000, () => console.log('Server running on port 5000'));

@@ -14,6 +14,8 @@ app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
 const users = [{ id: 1, email: 'test@example.com', password: 'Test@1234' }];
 const refreshTokens = [];
 
+const PORT = process.env.PORT || 8000;
+
 // Generate Access Token
 const generateAccessToken = (user) => {
     return jwt.sign({ id: user.id, email: user.email }, process.env.ACCESS_SECRET, { expiresIn: '15m' });
@@ -81,4 +83,4 @@ app.get("/",(req, res) => {
     res.json("running")
 })
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+app.listen(PORT, () => console.log('Server running on port 5000'));

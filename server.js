@@ -9,7 +9,7 @@ const { data } = require('./data');
 const app = express();
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: 'http://localhost:3000', credentials: true }));
+app.use(cors({ origin: 'https://auth-test-gilt.vercel.app', credentials: true }));
 
 const users = [{ id: 1, email: 'test@example.com', password: 'Test@1234' }];
 const refreshTokens = [];
